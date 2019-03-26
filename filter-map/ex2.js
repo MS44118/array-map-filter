@@ -1,12 +1,10 @@
 /* Array.prototype.map ET filter - Exercice 2
 
-Il s'agit d'écrire une fonction getCampusesTeachingReact, qui reçoit en argument un tableau
-d'objets décrivant des campus de la Wild Code School. Chaque campus a ces propriétés:
+Il s'agit d'écrire une fonction getCampusesTeachingReact, qui reçoit en argument un tableau d'objets décrivant des campus de la Wild Code School. Chaque campus a ces propriétés:
 - city: ville où se trouve le campus
 - curriculums: les cursus proposés dans ce campus (PHP/Symfony, JS/React, JS/Angular, etc.)
 
-En utilisant filter puis map, la fonction doit renvoyer les villes des campus qui proposent
-un cursus JS/React.
+En utilisant filter puis map, la fonction doit renvoyer les villes des campus qui proposent un cursus JS/React.
 
 Tableau en entrée:
 [
@@ -24,7 +22,15 @@ Sortie attendue:
 
 */
 
-function getCampusesTeachingReact(campuses) {
+function getCampusesTeachingReact(campusesArrayO) {
+  let tabOut = campusesArrayO
+    .filter(function(item){
+      return item.curriculums.includes('JS/React');
+    })
+    .map(function(item){
+      return item.city;
+    })
+  return tabOut;
 }
 
 module.exports = getCampusesTeachingReact;
