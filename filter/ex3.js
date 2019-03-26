@@ -23,8 +23,22 @@ Sortie attendue:
 
  */
 
-function keepStarks(names) {
+function keepStarks(namesArray) {
+  let tabOut = namesArray.filter(function(item){
+    return item.endsWith('Stark');
+  })
+  return tabOut;
 }
+
+console.log(keepStarks([
+  'Bran Stark',
+  'Cersei Lannister',
+  'Sandor Clegane',
+  'Arya Stark',
+  'Yara Greyjoy',
+  'Sansa Stark'
+]));
+
 
 // Ne pas modifier l'export
 module.exports = keepStarks;

@@ -15,8 +15,13 @@ Exemple d'entrée:
 
  */
 
-function getMultiplesOf(numbers, n) {
+function getMultiplesOf(numbersArray, num) {
+  let tabOut = numbersArray.filter(function(item){
+    return item%num === 0;
+  })
+  return tabOut;
 }
 
+// console.log(getMultiplesOf([-12, -10, -7, -1, 5, 8, 11, 15, 20, 27], 5))
 // Ne pas modifier l'export
 module.exports = getMultiplesOf;

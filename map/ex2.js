@@ -16,22 +16,10 @@ par le nom du produit
 
 Exemple d'entrée:
   [
-    {
-      food: 'Bacon',
-      isVegetarian: false
-    },
-    {
-      food: 'Sausage',
-      isVegetarian: false
-    },
-    {
-      food: 'Tofu',
-      isVegetarian: true
-    },
-    {
-      food: 'Chick Pea',
-      isVegetarian: true
-    }
+    {food: 'Bacon', isVegetarian: false },
+    {food: 'Sausage', isVegetarian: false },
+    {food: 'Tofu', isVegetarian: true },
+    {food: 'Chick Pea', isVegetarian: true }
   ]
 En sortie: [
   'Bacon is not suitable for vegetarians',
@@ -42,10 +30,25 @@ En sortie: [
 
  */
 
-function getFoodCategories(foods) {
+function getFoodCategories(foodsObjectArray) {
+  let tabOut = foodsObjectArray.map(function(foodsObjects){
+    if(foodsObjects.isVegetarian === false){
+      return foodsObjects.food + ' is not suitable for vegetarians';
+    } else {
+      return foodsObjects.food + ' is suitable for vegetarians';
+    }
+  })
+  return tabOut;
 }
 
-
+// console.log(getFoodCategories(
+//   [
+//   {food: 'Bacon', isVegetarian: false },
+//   {food: 'Sausage', isVegetarian: false },
+//   {food: 'Tofu', isVegetarian: true },
+//   {food: 'Chick Pea', isVegetarian: true }
+//   ])
+// )
 
 // Ne pas modifier l'export
 module.exports = getFoodCategories;

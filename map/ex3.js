@@ -1,18 +1,5 @@
 /* Array.prototype.map - Exercice 3
 
-Ecrire une fonction getMoviesFreshness qui reçoit comme un argument un tableau
-d'objets représentant des films.
-Chaque film a deux propriétés:
-  - `name` le nom du film
-  - `rating` la note qui lui attribuée sur le site rottentomatoes.com
-
-La fonction getMoviesWithFreshness doit renvoyer un tableau contenant les objets du tableau
-d'entrée, auxquels on aura ajouté une propriété, dont la clé sera label, et la valeur,
-une chaîne, dépendante de la valeur de rating :
-
-* Si `rating` est infériéur à 60, la valeur à attribuer à label sera "rotten".
-* Si `rating` est compris entre 60 et 75 (inclus), la valeur à attribuer à label sera "fresh".
-* Si `rating` est supérieur à 75, la valeur à attribuer à label sera "certified fresh".
 
 Exemple d'entrée:
   [
@@ -57,12 +44,59 @@ En sortie:
     }
   ]
 
+
+  Ecrire une fonction getMoviesFreshness qui reçoit comme un argument un tableau
+d'objets représentant des films.
+Chaque film a deux propriétés:
+  - `name` le nom du film
+  - `rating` la note qui lui attribuée sur le site rottentomatoes.com
+
+La fonction getMoviesWithFreshness doit renvoyer un tableau contenant les objets du tableau
+d'entrée, auxquels on aura ajouté une propriété, dont la clé sera label, et la valeur,
+une chaîne, dépendante de la valeur de rating :
+
+* Si `rating` est infériéur à 60, la valeur à attribuer à label sera "rotten".
+* Si `rating` est compris entre 60 et 75 (inclus), la valeur à attribuer à label sera "fresh".
+* Si `rating` est supérieur à 75, la valeur à attribuer à label sera "certified fresh".
  */
 
-function getMoviesFreshness(movies) {
+function getMoviesFreshness(moviesObjectsArray) {
+  let tabOut = moviesObjectsArray.map(function(moviesObjects){
+    if(moviesObjects.rating < 60){
+      moviesObjects.label = 'rotten';
+      return moviesObjects;
+      
+    } else if (moviesObjects.rating > 75){
+      moviesObjects.label = 'certified fresh';
+      return moviesObjects;
+    } else {
+      moviesObjects.label = 'fresh';
+      return moviesObjects;
+    }
+  })
+  return tabOut
 }
 
-
+console.log(getMoviesFreshness(
+[
+  {
+    name: 'Crazy Rich Asians',
+    rating: 93
+  },
+  {
+    name: 'Skyscraper',
+    rating: 46
+  },
+  {
+    name: 'Leave No Trace',
+    rating: 100
+  },
+  {
+    name: 'White Boy Rick',
+    rating: 60
+  }
+])
+)
 
 // Ne pas modifier l'export
 module.exports = getMoviesFreshness;
